@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+  id="cordova-plugin-iamport-kcp"
+  version="1.1.3">
+
+    <name>CordovaPluginIamportKcp</name>
+    <description>Cordova Plugin for KCP Payment via Iamport</description>
+    <author>iamport</author>
+    <license>MIT</license>
+    <keywords>payment,iamport,kcp</keywords>
+
+    <preference name="URL_SCHEME" /> <!-- https://github.com/EddyVerbruggen/Custom-URL-scheme 설치를 위해 preference를 전달함 -->
+
+    <engines>
+        <engine name="cordova" version=">=4.0.0" />
+    </engines>
+    <dependency id="iamport-cordova-interface" url="https://github.com/iamport/iamport-cordova-interface"/>
+    <dependency id="cordova-plugin-customurlscheme" url="https://github.com/EddyVerbruggen/Custom-URL-scheme"/>
+    <dependency id="cordova-plugin-inappbrowser-url-scheme" url="https://github.com/iamport/cordova-plugin-inappbrowser"/>
+
+    <asset src="www/iamport-checkout.html" target="iamport-checkout.html"></asset>
+    <asset src="www/js/jquery-1.12.4.min.js" target="js/jquery-1.12.4.min.js"></asset>
+    
+    <js-module src="www/js/cordova-iamport.js" name="CordovaIamport">
+        <clobbers target="CordovaIamport" />
+    </js-module>
+
+    <platform name="ios">
+        <config-file target="config.xml" parent="/*">
+            <feature name="IamportKcp">
+                <param name="ios-package" value="IamportKcpPlugin" />
+                <param name="onload" value="true" />
+            </feature>
+
+            <preference name="IamportAppScheme" value="$URL_SCHEME"/>
+            <allow-navigation href="*" /> <!-- white list -->
+        </config-file>
+
+        <config-file target="*-Info.plist" parent="LSApplicationQueriesSchemes">
+            <array>
+                <string>kftc-bankpay</string> <!-- 계좌이체 -->
+                <string>ispmobile</string> <!-- ISP모바일 -->
+                <string>itms-apps</string> <!-- 앱스토어 -->
+                <string>hdcardappcardansimclick</string> <!-- 현대카드-앱카드 -->
+                <string>smhyundaiansimclick</string> <!-- 현대카드-공인인증서 -->
+                <string>shinhan-sr-ansimclick</string> <!-- 신한카드-앱카드 -->
+                <string>smshinhanansimclick</string> <!-- 신한카드-공인인증서 -->
+                <string>kb-acp</string> <!-- 국민카드-앱카드 -->
+                <string>mpocket.online.ansimclick</string> <!-- 삼성카드-앱카드 -->
+                <string>ansimclickscard</string> <!-- 삼성카드-온라인결제 -->
+                <string>ansimclickipcollect</string> <!-- 삼성카드-온라인결제 -->
+                <string>vguardstart</string> <!-- 삼성카드-백신 -->
+                <string>samsungpay</string> <!-- 삼성카드-삼성페이 -->
+                <string>scardcertiapp</string> <!-- 삼성카드-공인인증서 -->
+                <string>lottesmartpay</string> <!-- 롯데카드-모바일결제 -->
+                <string>lotteappcard</string> <!-- 롯데카드-앱카드 -->
+                <string>cloudpay</string> <!-- 하나카드-앱카드 -->
+                <string>nhappvardansimclick</string> <!-- 농협카드-앱카드 -->
+                <string>nonghyupcardansimclick</string> <!-- 농협카드-공인인증서 -->
+                <string>citispay</string> <!-- 씨티카드-앱카드 -->
+                <string>citicardappkr</string> <!-- 씨티카드-공인인증서 -->
+                <string>kakaotalk</string> <!-- 카카오페이 -->
+                <string>payco</string> <!-- 페이코 -->
+            </array>
+        </config-file>
+
+        <header-file src="src/ios/IamportKcpPlugin.h" />
+        <source-file src="src/ios/IamportKcpPlugin.m" />
+    </platform>
+    <platform name="android">
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="IamportKcp" >
+                <param name="android-package" value="kr.iamport.cordova.kcp.IamportKcpPlugin"/>
+                <param name="onload" value="true" />
+            </feature>
+            <preference name="IamportURLSchemeHandler" value="kr.iamport.cordova.kcp.KcpUrlSchemeHandler"/> <!-- iamport inappbrowser(cordova inappbrowser fork) -->
+            <preference name="AndroidLaunchMode" value="singleInstance" />
+            <allow-navigation href="*" /> <!-- cordova-plugin-whitelist 에 의해 chrome browser 새창열림 방지(ex. location.href = 'url') -->
+        </config-file>
+
+        <source-file src="src/android/kr/iamport/cordova/kcp/IamportKcpPlugin.java" target-dir="src/kr/iamport/cordova/kcp" />
+        <source-file src="src/android/kr/iamport/cordova/kcp/KcpUrlSchemeHandler.java" target-dir="src/kr/iamport/cordova/kcp" />
+        <source-file src="src/android/kr/iamport/cordova/PaymentScheme.java" target-dir="src/kr/iamport/cordova" />
+    </platform>
+
+</plugin>

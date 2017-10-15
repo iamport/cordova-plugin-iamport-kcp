@@ -1,0 +1,36 @@
+{
+  "name": "cordova-plugin-iamport-kcp",
+  "version": "0.9.0",
+  "description": "Cordova Plugin for KCP Payment via Iamport",
+  "cordova": {
+    "id": "cordova-plugin-iamport-kcp",
+    "platforms": [
+      "ios",
+      "android"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iamport/cordova-plugin-iamport-kcp"
+  },
+  "keywords": [
+    "payment",
+    "iamport",
+    "kcp",
+    "ecosystem:cordova",
+    "cordova-ios",
+    "cordova-android"
+  ],
+  "engines": [
+    {
+      "name": "cordova",
+      "version": ">=4.0.0"
+    }
+  ],
+  "author": "iamport",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/iamport/cordova-plugin-iamport-kcp/issues"
+  },
+  "homepage": "https://github.com/iamport/cordova-plugin-iamport-kcp#readme"
+}
