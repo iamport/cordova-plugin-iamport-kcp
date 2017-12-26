@@ -1,6 +1,6 @@
 {
   "name": "cordova-plugin-iamport-kcp",
-  "version": "0.9.0",
+  "version": "0.9.1",
   "description": "Cordova Plugin for KCP Payment via Iamport",
   "cordova": {
     "id": "cordova-plugin-iamport-kcp",
