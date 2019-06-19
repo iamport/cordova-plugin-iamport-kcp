@@ -1,5 +1,5 @@
 # cordova-plugin-iamport-kcp
-[아임포트](http://www.iamport.kr) KCP결제를 cordova 환경에서 연동하기 위한 플러그인입니다.
+[아임포트](http://www.iamport.kr) KCP결제 및 휴대폰 본인인증을 cordova 환경에서 연동하기 위한 플러그인입니다.
 
 ## 준비 사항  
 결제테스트까지 수행하기 위해서는 [아임포트 관리자 페이지](https://admin.iamport.kr) 에서 계정 생성이 필요합니다.  
@@ -16,10 +16,17 @@ cordova plugin add cordova-plugin-iamport-kcp --variable URL_SCHEME=cordovakcp -
 ```
 
 플러그인 설치가 되면 javascript module이 자동 복사/등록됩니다.(cordova-iamport.js)  
+
 결제가 필요한 순간에 다음과 같이 javascript 호출을 통해 `inappbrowser`를 통해 결제 프로세스를 시작할 수 있습니다.  
 
 ```javascript
 CordovaIamport.payment(user_code, param, callback)
+```
+
+휴대폰 본인인증은 다음의 javascript 호출을 통해 가능합니다.     
+
+```javascript
+CordovaIamport.certification(user_code, param, callback)
 ```
 
 ### 1. 특징  
@@ -30,9 +37,9 @@ cordova 특성상 `inappbrowser`를 통해 결제프로세스가 진행되므로
 - m\_redirect\_url속성을 선언할 필요가 없음(선언해도 overwrite됨)  
 - callback에 전달되는 rsp속성이 제한됨(success, imp\_uid, merchant\_uid, error\_msg 뿐)  
 
-### 2. Example  
+### 2. 결제연동 Example  
 ```javascript
-CordovaIamport.payment('imp68124833', {
+CordovaIamport.payment('imp33886024', {
     pay_method : 'card',
     merchant_uid : 'merchant_' + new Date().getTime(),
     name : '주문명:결제테스트',
@@ -49,6 +56,22 @@ CordovaIamport.payment('imp68124833', {
         msg += '상점 거래ID : ' + rsp.merchant_uid;
     } else {
         var msg = '결제에 실패하였습니다.';
+        msg += '에러내용 : ' + rsp.error_msg;
+    }
+    alert(msg);
+});
+```
+
+### 3. 본인인증 Example  
+```javascript
+CordovaIamport.payment('가맹점식별코드', {
+    name : '홍길동'
+}, function(rsp) {
+    if ( rsp.success ) {
+        var msg = '본인인증이 완료되었습니다.';
+        msg += '고유ID : ' + rsp.imp_uid;
+    } else {
+        var msg = '본인인증에 실패하였습니다.';
         msg += '에러내용 : ' + rsp.error_msg;
     }
     alert(msg);
