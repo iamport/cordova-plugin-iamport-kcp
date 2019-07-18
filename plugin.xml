@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
   id="cordova-plugin-iamport-kcp"
-  version="0.9.5">
+  version="0.9.6">
 
     <name>CordovaPluginIamportKcp</name>
     <description>Cordova Plugin for KCP Payment via Iamport</description>
@@ -16,7 +16,7 @@
     </engines>
     <dependency id="iamport-cordova-interface"/>
     <dependency id="cordova-plugin-customurlscheme"/>
-    <dependency id="cordova-plugin-inappbrowser-url-scheme" version="1.1.0"/>
+    <dependency id="cordova-plugin-inappbrowser-url-scheme" version="1.1.1"/>
 
     <asset src="www/iamport-checkout.html" target="iamport-checkout.html"></asset>
     <asset src="www/js/jquery-1.12.4.min.js" target="js/jquery-1.12.4.min.js"></asset>
