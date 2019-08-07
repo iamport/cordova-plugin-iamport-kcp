@@ -74,8 +74,9 @@
     NSString *strHttp = @"http://";
     NSString *strHttps = @"https://";
     NSString *strFiles = @"file://"; // index.html(local html file )
+    NSString *strIonic = @"ionic://"; // ionic default scheme
     NSString *reqUrl=[[request URL] absoluteString]; NSLog(@"webview 에 요청된 url==>%@",reqUrl);
-    if (!([reqUrl hasPrefix:strHttp]) && !([reqUrl hasPrefix:strHttps]) && !([reqUrl hasPrefix:strFiles])) {
+    if (!([reqUrl hasPrefix:strHttp]) && !([reqUrl hasPrefix:strHttps]) && !([reqUrl hasPrefix:strFiles]) && !([reqUrl hasPrefix:strIonic])) {
         [[UIApplication sharedApplication] openURL:[request URL]];
         return NO;
     }
