@@ -1,4 +1,12 @@
-# cordova-plugin-iamport-kcp
+# cordova-plugin-iamport-kcp(DEPRECATED)
+해당 프로젝트는 아이오닉 상위 버전과 호환 및 외부 라이브러리 의존도를 해결하기 위해 [iamport-cordova](https://github.com/iamport/iamport-cordova) 플러그인으로 대체되어 DEPRECATED 되었습니다. `iamport-cordova` 플러그인으로 코르도바 프로젝트, 아이오닉 - 앵귤러 프로젝트에서 아임포트 일반/정기결제 및 본인인증 기능을 이용하실 수 있습니다. 아이오닉 - 리액트 프로젝트는 [iamport-capacitor](https://github.com/iamport/iamport-capacitor) 플러그인을 사용하시면 됩니다. 자세한 내용은 아래 매뉴얼을 참고해주세요.
+
+- [코르도바 프로젝트에서 아임포트 연동하기](https://github.com/iamport/iamport-cordova/blob/master/README.md)
+- [아이오닉 - 앵귤러 프로젝트에서 아임포트 연동하기](https://github.com/iamport/iamport-cordova/blob/master/manuals/IONIC.md)
+- [아이오닉 - 리액트 프로젝트/캐패시터 프로젝트에서 아임포트 연동하기](https://github.com/iamport/iamport-capacitor/blob/master/README.md)
+
+____________________________________________________________________
+
 [아임포트](http://www.iamport.kr) KCP결제 및 휴대폰 본인인증을 cordova 환경에서 연동하기 위한 플러그인입니다.
 
 ## 준비 사항  
